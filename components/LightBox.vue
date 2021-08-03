@@ -1,8 +1,8 @@
 <template>
   <div>
-    <a @mouseenter.prevent="setLightBox" :href="image.full_size" class="glightbox">
+    <a @mouseenter.prevent="setLightBox" :href="image" class="glightbox">
         <figure>
-        <img :src="image.medium_square_crop" class="image" />
+        <img :src="image" class="image" />
         </figure>
     </a>
   </div>

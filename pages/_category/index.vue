@@ -26,7 +26,7 @@ export default {
     return { posts }
   },
   mounted(){
-    // this.getThumbler()
+    this.getThumbler()
   },
   computed: {
     filterByCategories(){
@@ -35,9 +35,9 @@ export default {
   },
   methods: {
     getThumbler(id){
-      for(let item in this.data){
-        if(this.data[item].images.length && this.data[item].id === id){
-          return this.data[item].images[0].image.medium_square_crop
+      for(let item in this.posts){
+        if(this.posts[item].media && this.posts[item].slug === id){
+          return this.posts[item].media[0]
         }
       }
     }

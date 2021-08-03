@@ -11,9 +11,9 @@
             </div>
             <div>
             <div class="gallery">
-                <div v-for="item in post.images" :key="item.id">
+                <div v-for="item in post.media" :key="item">
                     <client-only>
-                        <LightBox :image="item.image" />
+                        <LightBox :image="item" />
                     </client-only>        
                 </div>
             </div>

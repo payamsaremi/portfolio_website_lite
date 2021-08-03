@@ -111,7 +111,7 @@ h1 + p, p + p {
 .card-wrap:hover .card-info:after {
   transition: 3s cubic-bezier(0.23, 1, 0.32, 1);
   opacity: 1;
-  transform: translateY(0);
+  /* transform: translateY(0); */
 }
 .card-wrap:hover .card-bg {
   transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1), opacity 4s cubic-bezier(0.23, 1, 0.32, 1);
