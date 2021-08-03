@@ -26,18 +26,34 @@ collections:
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-      - { label: 'Images', name: 'images', widget: 'image' }
+      # - { label: 'Images', name: 'images', widget: 'image' }
 
       - label: 'Cover Image'
         name: 'image'
         widget: 'image'
+        allow_multiple: true
         required: false
         tagname: ''
         media_library:
           config:
-            default_transformations:
-              - fetch_format: auto
-                width: 300    
-                quality: auto
-                crop: fill
-                effect: grayscale
+            multiple: true
+  
+  - name: "post"
+    label: "Posts"
+    label_singular: "Post"
+    folder: "example/data/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Media"
+        name: "media"
+        widget: "image"
+        allow_multiple: true
+        media_library:
+          config:
+            multiple: true
+      - { label: "Location", name: "location", type: "Point", widget: "map", required: false }
+      - { label: "Body", name: "body", widget: "text", required: false }
