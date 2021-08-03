@@ -1,14 +1,14 @@
 <template>
   <div class="main">
-  <!-- <div class="cards-container">
-    <div v-for="category in filterByCategories" :key="category.id">
-        <card :link="`${category.category.slug.toLowerCase()}/${category.id}`" :data-image="getThumbler(category.id)">
-          <h3 slot="category">{{ category.category.name }}</h3>
-          <h1 slot="header">{{ category.title }}</h1>
-          <p slot="content">{{ category.description }}</p>
+  <div class="cards-container">
+    <div v-for="post in posts" :key="post.slug">
+        <card :link="`${post.dir.toLowerCase()}/${post.slug}`" :data-image="getThumbler(post.slug)">
+          <h3 slot="category">{{ post.dir.toUpperCase().slice(1) }}</h3>
+          <h1 slot="header">{{ post.title }}</h1>
+          <p slot="content">{{ post.description }}</p>
         </card>
     </div>
-  </div> -->
+  </div>
   <div class="nav-buttons">
       <NavigationButton back="true"/>
   </div>
@@ -21,12 +21,10 @@ export default {
   data(){
     return {}
   },
-  // async asyncData({ $axios,params }) {
-  //   const slug = params.category
-  //   const data = await $axios.$get('api/v1/projects/')
-  //   console.log(slug)
-  //   return { data, slug }
-  // },
+  async asyncData({ $content }) {
+    const posts = await $content("blog").fetch();
+    return { posts }
+  },
   mounted(){
     // this.getThumbler()
   },

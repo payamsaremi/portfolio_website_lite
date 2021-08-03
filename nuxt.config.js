@@ -43,7 +43,8 @@ export default {
     // https://www.npmjs.com/package/nuxt-lazy-load/v/latest
     'nuxt-lazy-load',
     // https://cloudinary.nuxtjs.org/setup
-    '@nuxtjs/cloudinary'
+    '@nuxtjs/cloudinary',
+    '@nuxt/content'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -68,5 +69,9 @@ export default {
     apiKey: '116311569323295',
     apiSecret: 'UDWhCaHvne4yQ7eeB5NONk5gp20',
     useComponent: true
+  },
+  
+  content: {
+    // Options
   }
 }

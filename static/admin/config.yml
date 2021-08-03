@@ -5,6 +5,13 @@ backend:
 media_folder: static/img
 public_folder: /img
 
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: payam-space
+    api_key: 116311569323295
+
+
 collections:
   - name: 'blog'
     label: 'Blog'
@@ -19,3 +26,16 @@ collections:
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+      - label: 'Cover Image'
+        name: 'image'
+        widget: 'image'
+        required: false
+        tagname: ''
+        media_library:
+          config:
+            default_transformations:
+              - fetch_format: auto
+                width: 300    
+                quality: auto
+                crop: fill
+                effect: grayscale

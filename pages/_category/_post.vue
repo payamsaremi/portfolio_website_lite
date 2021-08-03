@@ -5,19 +5,18 @@
              <div class="nav-buttons">
                 <NavigationButton back="true"/>
             </div>
-            <h2 class="heading">{{ data.title }}</h2>
-            <p>{{ data.description }}</p>
-        </div>
-        <div>
-            <div class="gallery">
-            <div v-for="item in data.images" :key="item.id">
-                <client-only>
-                    <LightBox :image="item.image" />
-                </client-only>
-                
+                <h2 class="heading">{{ post.title }}</h2>
+                <p>{{ post.description }}</p>
+                <nuxt-content :document="post" />
             </div>
-            
-        </div>
+            <div>
+            <div class="gallery">
+                <div v-for="item in post.images" :key="item.id">
+                    <client-only>
+                        <LightBox :image="item.image" />
+                    </client-only>        
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -25,15 +24,23 @@
 
 <script>
 export default {
-    // transition:'slide-fade',
-    async asyncData({ $axios, params }) {
-    const data = await $axios.$get(`api/v1/projects/${params.post}`)
-    console.log(data)
-    return { data }
+    data(){
+        return {}
+    },
+    async asyncData({ $content, params, error }) {
+    let post;
+    try {
+      post = await $content("blog", params.post).fetch();
+      console.log(params.post)
+      // OR const article = await $content(`articles/${params.slug}`).fetch()
+    } catch (e) {
+      error({ message: "Post not found" });
+    }
+
+    return {
+      post,
+    };
   },
-  data(){
-      return {}
-  }
 }
 </script>
 
