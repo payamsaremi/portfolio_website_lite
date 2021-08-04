@@ -4,7 +4,7 @@
         <figure>
         <!-- <img :src="image" class="image" /> -->
         {{image}}
-        <cld-image publicId="download_42_jp1uvz.png" height="400" width="400" crop="fill" class="image"/>
+        <cld-image :publicId="image" height="400" width="400" crop="fill" class="image"/>
         </figure>
         
     </a>
