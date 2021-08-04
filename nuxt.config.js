@@ -1,5 +1,9 @@
 export default {
   target: 'static', // default is 'server'
+  
+  generate: {
+    fallback: true
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'frontend',
@@ -73,5 +77,6 @@ export default {
   
   content: {
     // Options
-  }
+  },
+  
 }

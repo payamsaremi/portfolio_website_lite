@@ -6,7 +6,7 @@
                 <NavigationButton back="true"/>
             </div>
                 <h2 class="heading">{{ post.title }}</h2>
-                <p>{{ post.description }}</p>
+                <!-- <p>{{ post.description }}</p> -->
                 <nuxt-content :document="post" />
             </div>
             <div>
