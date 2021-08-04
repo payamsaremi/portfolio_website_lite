@@ -1,10 +1,13 @@
 <template>
   <div>
-    <a @mouseenter.prevent="setLightBox" :href="image" class="glightbox">
+    <a @mouseenter.prevent="setLightBox" :href="fullSizeImage" class="glightbox">
         <figure>
         <!-- <img :src="image" class="image" /> -->
         <!-- {{image}} -->
-        <cld-image :publicId="image" height="400" width="400" crop="fill" class="image"/>
+        <div @mouseover="itsHover = !itsHover" @mouseout="itsHover = !itsHover">
+            <cld-image v-if="itsHover" :publicId="image" height="400" width="400" crop="crop" class="image"/>
+            <cld-image v-if="!itsHover" :publicId="image" height="400" width="400" crop="fill" class="image"/>
+        </div>
         </figure>
         
     </a>
@@ -17,7 +20,8 @@ export default {
     props:['image'],
     data(){
         return{
-            lightbox: ''
+            lightbox: '',
+            itsHover: false
         }
     },
     methods: {
@@ -33,6 +37,19 @@ export default {
         toggleLightBox(){
             this.lightbox.open()
         }
+  },
+  computed: {
+    fullSizeImage() {
+      return this.$cloudinary.image.url(
+        this.image,
+        {
+          gravity: 'auto:subject',
+        //   width: 'auto',
+          height: '1400',
+          crop: 'fill',
+        }
+      )
+    }
   }
 }
 </script>

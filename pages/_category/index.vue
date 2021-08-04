@@ -37,7 +37,17 @@ export default {
     getThumbler(id){
       for(let item in this.posts){
         if(this.posts[item].media && this.posts[item].slug === id){
-          return this.posts[item].media[0]
+          let url = this.posts[item].media[0]
+          let image = this.$cloudinary.image.url(
+                      url,
+                        {
+                          gravity: 'auto:subject',
+                          width: 400,
+                          height: 400,
+                          crop: 'fill',
+                        }
+                      )
+          return image
         }
       }
     }
