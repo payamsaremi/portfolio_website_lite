@@ -16,10 +16,13 @@
     "@nuxtjs/cloudinary": "^1.0.3",
     "@nuxtjs/emotion": "^0.1.0",
     "@nuxtjs/pwa": "^3.3.5",
+    "cesium": "^1.85.0",
     "core-js": "^3.15.1",
+    "d3": "^7.0.1",
     "glightbox": "^3.0.9",
     "nuxt": "^2.15.7",
     "nuxt-lazy-load": "^1.2.6",
+    "open-simplex-noise": "^2.5.0",
     "p5": "^1.4.0"
   },
   "devDependencies": {

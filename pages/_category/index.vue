@@ -8,6 +8,13 @@
           <p slot="content">{{ post.description }}</p>
         </card>
     </div>
+      <div v-for="post in local_posts" :key="post.id">
+        <card :link="post.link" data-image="">
+          <h3 slot="category">{{ post.category.toUpperCase() }}</h3>
+          <h1 slot="header">{{ post.title }}</h1>
+          <p slot="content">{{ post.description }}</p>
+        </card>
+      </div>
   </div>
   <div class="nav-buttons">
       <NavigationButton back="true"/>
@@ -19,7 +26,11 @@
 export default {
   //transition: 'slide-fade',
   data(){
-    return {}
+    return {
+      local_posts: [
+        {id:0,category:'art', title:'Perlin Flowers', description:'Experimentation with Perlin Noise and javascript', image:'',link:'art/noisy' }
+      ]
+    }
   },
   async asyncData({ $content }) {
     const posts = await $content("blog").fetch();
